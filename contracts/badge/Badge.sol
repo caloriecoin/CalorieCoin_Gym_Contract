@@ -7,17 +7,21 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Badge is ERC721, Ownable {
     uint256 private _nextTokenId;
+    
     string private _baseUri;
-
+    string private _description;
+    
     constructor(
         string memory name, 
         string memory symbol,
-        string memory baseUri
+        string memory baseUri,
+        string memory description
     )
         ERC721(name, symbol)
         Ownable(msg.sender)
     {
         _baseUri = baseUri;
+        _description = description;
     }
 
     function _baseURI() internal view override returns (string memory) {
@@ -27,5 +31,14 @@ contract Badge is ERC721, Ownable {
     function safeMint(address to) public onlyOwner {
         uint256 tokenId = _nextTokenId++;
         _safeMint(to, tokenId);
+    }
+
+    function getInfo() external view returns (
+        string memory,
+        string memory,
+        string memory,
+        string memory
+    ) {
+        return (name(), symbol(), _baseUri, _description);
     }
 }
