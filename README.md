@@ -18,7 +18,7 @@ This project for our `CalorieCoin` Team's eco-system contracts.
 
 ## Deployed Contracts Address
 After if contracts are deployed, contract's address will be write in here 😘
-### CalroieCoin Token (Based on OpenZeppline's ERC20)
+### CalroieCoin Token (Based on OpenZeppline's ERC20, Token)
 ```sh
 # Testnet(Nile) Contract Address
 -
@@ -27,7 +27,7 @@ After if contracts are deployed, contract's address will be write in here 😘
 # Mainnet Contract Address
 -
 ```
-### Badge (It worked like NFT)
+### Badge (Based on OpenZeppline's ERC721, NFT)
 ```sh
 # Testnet(Nile) Contract Address
 -
