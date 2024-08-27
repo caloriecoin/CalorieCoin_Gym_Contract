@@ -1,24 +1,21 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
+import "@openzeppelin/contracts/access/Ownable.sol";
+
 import "./CalorieCoin.sol";
 
-contract Proxy {
-    address internal _owner;
+contract Proxy is Ownable {
     CalorieCoin internal _currentCalorieCoinToken;
     
     uint256 internal _calorieCoinTokenVersion;
     mapping(uint256=>CalorieCoin) _calorieCoinTokenList;
 
-    constructor() {
-        _owner = msg.sender;
-    }
+    constructor()
+        Ownable(msg.sender)
+    {}
 
-    function updateCalorieCoin(CalorieCoin calorieCoin) external {
-        if(_owner != msg.sender) {
-            revert ErrInvalidOwner(msg.sender);
-        }
-
+    function updateCalorieCoin(CalorieCoin calorieCoin) external onlyOwner {
         _calorieCoinTokenList[_calorieCoinTokenVersion] = calorieCoin;
         _calorieCoinTokenVersion++;
     } 
@@ -34,6 +31,4 @@ contract Proxy {
     function getLatestCalorieCoinVersion() external view returns(uint256) {
         return _calorieCoinTokenVersion;
     }
-
-    error ErrInvalidOwner(address owner);
 }

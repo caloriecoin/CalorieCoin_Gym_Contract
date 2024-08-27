@@ -1,27 +1,25 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
 import "./IAttendance.sol";
 
-contract Attendance is IAttendance {
-    address internal _owner;
-    
+contract Attendance is Ownable, IAttendance {
     mapping(address=>uint256) internal _attendanceList;
     mapping(address=>bool) internal _checkerList;
 
     ERC20 internal _tokenContract;
 
-    constructor(ERC20 tokenContract) {
+    constructor(ERC20 tokenContract) 
+        Ownable(msg.sender) 
+    {
         _checkerList[msg.sender] = true;
         _tokenContract = tokenContract;
     }
 
-    function submitChecker() virtual override external {
-        if (msg.sender != _owner) {
-            revert ErrInvalidOwner(msg.sender);
-        }
-
+    function submitChecker() virtual override external onlyOwner {
         _checkerList[msg.sender] = true;
     }
 
