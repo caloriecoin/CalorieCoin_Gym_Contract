@@ -23,12 +23,12 @@ contract Proxy {
         _calorieCoinTokenVersion++;
     } 
 
-    function getCalorieCoin(uint256 index) external view returns(CalorieCoin) {
-        return _calorieCoinTokenList[index];
+    function getCalorieCoin(uint256 version) external view returns(CalorieCoin) {
+        return _calorieCoinTokenList[version-1];
     }
 
     function getLatestCalorieCoin() external view returns(CalorieCoin) {
-        return _calorieCoinTokenList[_calorieCoinTokenVersion];
+        return _calorieCoinTokenList[_calorieCoinTokenVersion-1];
     }
 
     function getLatestCalorieCoinVersion() external view returns(uint256) {
