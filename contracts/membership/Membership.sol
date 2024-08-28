@@ -62,6 +62,16 @@ contract Membership is Ownable, IMembership {
         _membershipBlockNumber[updateMember] = membershipEndBlockNumber;
     }
 
+    function pauseMembership(
+        address member
+    ) external override onlyOwner {
+        if(!_membership[member]) {
+            revert ErrNotSubmitMember(member);
+        }
+
+        _membership[member] = false;
+    }
+
    function getMembershipBlockNumber(
         address member
     ) external view override returns(uint256) {

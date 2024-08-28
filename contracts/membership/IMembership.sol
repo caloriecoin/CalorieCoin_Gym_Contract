@@ -25,6 +25,10 @@ interface IMembership {
         bytes32 s
     ) external;
 
+    function pauseMembership(
+        address member
+    ) external;
+
     function getMembershipBlockNumber(
         address member
     ) external view returns(uint256);
