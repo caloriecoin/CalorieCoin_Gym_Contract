@@ -2,12 +2,12 @@
 pragma solidity ^0.8.6;
 
 interface IMembership {
-    event NewMembership(address newMember);
+    event NewMembership(address indexed newMember, uint membershipExpiredTime);
     event UpdateMembership(address indexed updateMember, uint256 blockNumber);
 
     function newMembership(
         address newMember,
-        uint256 membershipEndBlockNumber,
+        uint membershipExpiredTime,
         uint256 tokenAmount,
         uint256 deadline,
         uint8 v,
@@ -15,9 +15,9 @@ interface IMembership {
         bytes32 s
     ) external;
     
-    function updateMembership(
+    function updateMembershipExpiredTime(
         address updateMember,
-        uint256 membershipEndBlockNumber,
+        uint membershipExpiredTime,
         uint256 tokenAmount,
         uint256 deadline,
         uint8 v,
@@ -25,13 +25,13 @@ interface IMembership {
         bytes32 s
     ) external;
 
-    function pauseMembership(
+    function removeMembership(
         address member
     ) external;
 
-    function getMembershipBlockNumber(
+    function getExpiredTime(
         address member
-    ) external view returns(uint256);
+    ) external view returns(uint);
 
     function isMember(
         address member

@@ -11,7 +11,7 @@ import "./IMembership.sol";
 contract Membership is Ownable, IMembership {
     Proxy internal _tokenProxyContract;
 
-    mapping(address=>uint256) _membershipBlockNumber;
+    mapping(address=>uint) _membershipExpiredTime;
     mapping(address=>bool) _membership;
 
     constructor(Proxy tokenProxyContract)
@@ -22,7 +22,7 @@ contract Membership is Ownable, IMembership {
 
     function newMembership(
         address newMember,
-        uint256 membershipEndBlockNumber,
+        uint membershipExpiredTime,
         uint256 tokenAmount,
         uint256 deadline,
         uint8 v,
@@ -35,15 +35,19 @@ contract Membership is Ownable, IMembership {
 
         CalorieCoin calorieCoin = _tokenProxyContract.getLatestCalorieCoin();
 
-        calorieCoin.permit(newMember, owner(), tokenAmount, deadline, v, r, s);
+        calorieCoin.permit(newMember, address(this), tokenAmount, deadline, v, r, s);
         calorieCoin.transferFrom(newMember, owner(), tokenAmount);
 
-        _membershipBlockNumber[newMember] = membershipEndBlockNumber;
+        _membershipExpiredTime[newMember] = membershipExpiredTime;
+
+        _membership[newMember] = true;
+
+        emit NewMembership(newMember, membershipExpiredTime);
     }
-    
-    function updateMembership(
+
+    function updateMembershipExpiredTime(
         address updateMember,
-        uint256 membershipEndBlockNumber,
+        uint membershipExpiredTime,
         uint256 tokenAmount,
         uint256 deadline,
         uint8 v,
@@ -56,13 +60,13 @@ contract Membership is Ownable, IMembership {
 
         CalorieCoin calorieCoin = _tokenProxyContract.getLatestCalorieCoin();
 
-        calorieCoin.permit(updateMember, owner(), tokenAmount, deadline, v, r, s);
+        calorieCoin.permit(updateMember, address(this), tokenAmount, deadline, v, r, s);
         calorieCoin.transferFrom(updateMember, owner(), tokenAmount);
 
-        _membershipBlockNumber[updateMember] = membershipEndBlockNumber;
+        _membershipExpiredTime[updateMember] = membershipExpiredTime;
     }
 
-    function pauseMembership(
+    function removeMembership(
         address member
     ) external override onlyOwner {
         if(!_membership[member]) {
@@ -72,10 +76,10 @@ contract Membership is Ownable, IMembership {
         _membership[member] = false;
     }
 
-   function getMembershipBlockNumber(
+   function getExpiredTime(
         address member
-    ) external view override returns(uint256) {
-        return _membershipBlockNumber[member];
+    ) external view override returns(uint) {
+        return _membershipExpiredTime[member];
     }
 
     function isMember(
