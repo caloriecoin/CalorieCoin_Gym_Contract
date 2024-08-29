@@ -4,15 +4,16 @@
 
 This project for our `CalorieCoin` Team's eco-system contracts.  
 ## Summary
-### CalroieCoin Token
+### CalroieCoin Token (TRC20)
 + Base of teams eco-system tokenomics
 + Burnable
 + Permit
 + Non-Pause
-### Badge (It worked like NFT)
-### Attendance
+### Badge (TRC721)
+### Application (for GYM Class)
+### Attendance (for GYM Class)
 ### Order
-### Membership (For GYM)
+### Membership
 ### Heart-Rate(or Burned Calorie Rate) based Reward Program
 
 
@@ -26,7 +27,7 @@ After if contracts are deployed, contract's address will be write in here 😘
 ```sh
 -
 ```
-### Badge (Based on OpenZeppline's ERC721, NFT)
+### Badge
 ```sh
 # Testnet(Nile) Contract Address
 -
