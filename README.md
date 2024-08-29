@@ -24,54 +24,35 @@ After if contracts are deployed, contract's address will be write in here 😘
 + Token `Proxy`: [TKyS5PcxCBCLBNdhoB7qoaJYYFT8t8zaqU](https://nile.tronscan.org/#/token20/TKyS5PcxCBCLBNdhoB7qoaJYYFT8t8zaqU) 
 + TRC20 `CalorieCoin`: [TS63ZtsZVVGCyz93de9WtSw5ndaQb9Gf2z](https://nile.tronscan.org/#/token20/TS63ZtsZVVGCyz93de9WtSw5ndaQb9Gf2z)  
 #### Mainnet Contract Address
-```sh
--
-```
++ Token `Proxy`: -
++ TRC20 `CalorieCoin`: -
 ### Badge
-```sh
-# Testnet(Nile) Contract Address
--
-```
-```sh
-# Mainnet Contract Address
--
-```
+#### Testnet(Nile) Contract Address
++ TRC721 `Badge`: -
++ `BadgeFactory`: -
+#### Mainnet Contract Address
++ TRC721 `Badge`: -
++ `BadgeFactory`: -
+### Application
+#### Testnet(Nile) Contract Address
++ `Application`: -
+#### Mainnet Contract Address
++ `Application`: -
 ### Attendance
-```sh
-# Testnet(Nile) Contract Address
--
-```
-```sh
-# Mainnet Contract Address
--
-```
+#### Testnet(Nile) Contract Address
++ `Attendance`: -
+#### Mainnet Contract Address
++ `Attendance`: -
 ### Order
-```sh
-# Testnet(Nile) Contract Address
--
-```
-```sh
-# Mainnet Contract Address
--
-```
+#### Testnet(Nile) Contract Address
++ `Order`: -
+#### Mainnet Contract Address
++ `Order`: -
 ### Membership (For GYM)
-```sh
-# Testnet(Nile) Contract Address
--
-```
-```sh
-# Mainnet Contract Address
--
-```
-### Heart-Rate based Reward Program
-```sh
-# Testnet(Nile) Contract Address
--
-```
-```sh
-# Mainnet Contract Address
--
-```
+#### Testnet(Nile) Contract Address
++ `Membership`: -
+#### Mainnet Contract Address
++ `Membership`: -
 
 ## Tests
 And you can running this project with `hardhat` & this commands..
