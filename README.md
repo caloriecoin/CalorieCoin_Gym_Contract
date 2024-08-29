@@ -48,7 +48,7 @@ After if contracts are deployed, contract's address will be write in here 😘
 + `Order`: -
 #### Mainnet Contract Address
 + `Order`: -
-### Membership (For GYM)
+### Membership
 #### Testnet(Nile) Contract Address
 + `Membership`: -
 #### Mainnet Contract Address
