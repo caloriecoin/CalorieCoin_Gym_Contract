@@ -50,7 +50,7 @@ After if contracts are deployed, contract's address will be write in here 😘
 + `Order`: -
 ### Membership
 #### Testnet(Nile) Contract Address
-+ `Membership`: -
++ `Membership`: [TAi8LPXCd5iJLiMqEY9xQ7Hok6B9mU9PfS](https://nile.tronscan.org/#/token20/TAi8LPXCd5iJLiMqEY9xQ7Hok6B9mU9PfS)  
 #### Mainnet Contract Address
 + `Membership`: -
 
