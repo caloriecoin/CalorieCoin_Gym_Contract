@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
-interface IAttendance {
-    event Attendance(address indexed checker, address indexed user, uint256 blockNumber);
+interface IReservation {
+    event Reservation(address indexed customer, uint256 indexed classId, uint256 blockNumber);
 
     function setRewardOffset(
         uint256 amount

@@ -5,12 +5,15 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 import "./IAttendance.sol";
+import "../membership/IMembership.sol";
 
 contract Attendance is Ownable, IAttendance {
     mapping(address=>uint256) internal _attendanceList;
     mapping(address=>bool) internal _checkerList;
 
     ERC20 internal _tokenContract;
+
+    IMembership internal _membership;
 
     constructor(ERC20 tokenContract) 
         Ownable(msg.sender) 
@@ -30,6 +33,10 @@ contract Attendance is Ownable, IAttendance {
     function attendance(address target) virtual override external {
         if (_checkerList[msg.sender] == false) {
             revert ErrInvalidChecker(msg.sender);
+        }
+
+        if(!_membership.isMember(target)) {
+            revert ErrNotMembershipSubmit(target);
         }
 
         _attendanceList[target] = block.number;
