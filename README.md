@@ -18,10 +18,11 @@ This project for our `CalorieCoin` Team's eco-system contracts.
 
 ## Deployed Contracts Address
 After if contracts are deployed, contract's address will be write in here 😘
-### CalroieCoin Token (Based on OpenZeppline's ERC20, Token)
+### CalroieCoin Token (Based on OpenZeppline's ERC20, Token) & Token Proxy Contract Address
 ```sh
 # Testnet(Nile) Contract Address
--
+TKyS5PcxCBCLBNdhoB7qoaJYYFT8t8zaqU # Proxy
+TS63ZtsZVVGCyz93de9WtSw5ndaQb9Gf2z # TRC20 Token
 ```
 ```sh
 # Mainnet Contract Address
