@@ -23,7 +23,8 @@ After if contracts are deployed, contract's address will be write in here 😘
 #### Testnet(Nile) Contract Address
 + Token `Proxy`: [TRjWW11ULV9dDvgdjqhzs5RsuEDVaJZFtr](https://nile.tronscan.org/#/contract/TRjWW11ULV9dDvgdjqhzs5RsuEDVaJZFtr) 
     - Hex: 41aceacbe7b595870105809d06b9675ff19d3126d9
-+ TRC20 `CalorieCoin`: [TS63ZtsZVVGCyz93de9WtSw5ndaQb9Gf2z](https://nile.tronscan.org/#/token20/TS63ZtsZVVGCyz93de9WtSw5ndaQb9Gf2z)  
++ TRC20 `CalorieCoin`: [TV2a5ZqZQydfrGQ56LnoLLcpkzXSDhh9Ck](https://nile.tronscan.org/#/token20/TV2a5ZqZQydfrGQ56LnoLLcpkzXSDhh9Ck)  
+    - Hex: 41d10d3b8a0662074cd6fa388dd2411a49c2627622
 #### Mainnet Contract Address
 + Token `Proxy`: -
 + TRC20 `CalorieCoin`: -
