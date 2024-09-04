@@ -37,8 +37,9 @@ After if contracts are deployed, contract's address will be write in here 😘
     - Hex: -
 ### Badge
 #### Testnet(Nile) Contract Address
-+ TRC721 `Badge`: -
-+ `BadgeFactory`: -
++ TRC721 `Badge`: badge will be create by `BadgeFactory` contract
++ `BadgeFactory`: [TKVAQS9X5YEZpxKgGB9PJV4ztYi6vKkxZy](https://nile.tronscan.org/#/contract/TKVAQS9X5YEZpxKgGB9PJV4ztYi6vKkxZy)
+    - Hex: 416863716c74ef29b56ba54501a8a14422af899d43
 #### Mainnet Contract Address
 + TRC721 `Badge`: -
 + `BadgeFactory`: -

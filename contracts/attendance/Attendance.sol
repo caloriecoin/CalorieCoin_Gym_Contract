@@ -2,24 +2,30 @@
 pragma solidity ^0.8.6;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+import "../token/CalorieCoin/Proxy.sol";
+import "../token/CalorieCoin/CalorieCoin.sol";
+import "../membership/IMembership.sol";
 
 import "./IAttendance.sol";
-import "../membership/IMembership.sol";
 
 contract Attendance is Ownable, IAttendance {
     mapping(address=>uint256) internal _attendanceList;
     mapping(address=>bool) internal _checkerList;
 
-    ERC20 internal _tokenContract;
+    Proxy private _tokenProxyContract;
+    IMembership private _membership;
 
-    IMembership internal _membership;
-
-    constructor(ERC20 tokenContract) 
+    constructor(
+        Proxy tokenProxyContract,
+        IMembership membership
+    ) 
         Ownable(msg.sender) 
     {
         _checkerList[msg.sender] = true;
-        _tokenContract = tokenContract;
+        
+        _tokenProxyContract = tokenProxyContract;
+        _membership = membership;
     }
 
     function submitChecker() virtual override external onlyOwner {
