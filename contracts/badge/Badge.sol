@@ -12,20 +12,29 @@ contract Badge is ERC721, Ownable {
     string private _description;
     
     constructor(
+        address creater,
         string memory name, 
         string memory symbol,
         string memory baseUri,
         string memory description
     )
         ERC721(name, symbol)
-        Ownable(msg.sender)
+        Ownable(creater)
     {
+        _nextTokenId = 0;
+
         _baseUri = baseUri;
         _description = description;
     }
 
     function _baseURI() internal view override returns (string memory) {
         return _baseUri;
+    }
+
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
+        _requireOwned(tokenId);
+
+        return _baseURI();
     }
 
     function safeMint(address to) public onlyOwner {

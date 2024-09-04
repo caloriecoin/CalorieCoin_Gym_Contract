@@ -22,7 +22,7 @@ contract BadgeFactory is Ownable {
         string memory description
     ) external onlyOwner {
         _badgeCount++;
-        _badgeList[_badgeCount] = new Badge(name, symbol, baseUri, description);
+        _badgeList[_badgeCount] = new Badge(msg.sender, name, symbol, baseUri, description);
 
         emit BadgeCreated(name, symbol, baseUri, description);
     }
