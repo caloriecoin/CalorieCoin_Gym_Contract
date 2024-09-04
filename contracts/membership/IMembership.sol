@@ -3,9 +3,19 @@ pragma solidity ^0.8.6;
 
 interface IMembership {
     event NewMembership(address indexed newMember, uint membershipExpiredTime);
-    event UpdateMembership(address indexed updateMember, uint256 blockNumber);
+    event UpdateMembership(address indexed updateMember, uint membershipExpiredTime);
 
     function newMembership(
+        address newMember,
+        uint membershipExpiredTime
+    ) external;
+    
+    function updateMembershipExpiredTime(
+        address updateMember,
+        uint membershipExpiredTime
+    ) external;
+
+    function newMembershipWithPayment(
         address newMember,
         uint membershipExpiredTime,
         uint256 tokenAmount,
@@ -15,7 +25,7 @@ interface IMembership {
         bytes32 s
     ) external;
     
-    function updateMembershipExpiredTime(
+    function updateMembershipExpiredTimeWithPayment(
         address updateMember,
         uint membershipExpiredTime,
         uint256 tokenAmount,
@@ -37,6 +47,9 @@ interface IMembership {
         address member
     ) external view returns(bool);
     
+    function isExpired(
+        address member
+    ) external view returns(bool);
 
     error ErrInvalidOwner(address owner);
     error ErrAlreadySubmitMember(address member);

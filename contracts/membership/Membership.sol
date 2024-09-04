@@ -14,13 +14,42 @@ contract Membership is Ownable, IMembership {
     mapping(address=>uint) _membershipExpiredTime;
     mapping(address=>bool) _membership;
 
-    constructor(Proxy tokenProxyContract)
-        Ownable(msg.sender)
+    constructor(
+        Proxy tokenProxyContract
+    ) Ownable(msg.sender)
     {
         _tokenProxyContract = tokenProxyContract;
     }
 
     function newMembership(
+        address newMember,
+        uint membershipExpiredTime
+    ) external override onlyOwner {
+        if(_membership[newMember]) {
+            revert ErrAlreadySubmitMember(newMember);
+        }
+
+        _membershipExpiredTime[newMember] = membershipExpiredTime;
+
+        _membership[newMember] = true;
+
+        emit NewMembership(newMember, membershipExpiredTime);
+    }
+    
+    function updateMembershipExpiredTime(
+        address updateMember,
+        uint membershipExpiredTime
+    ) external override onlyOwner {
+        if(!_membership[updateMember]) {
+            revert ErrNotSubmitMember(updateMember);
+        }
+
+        _membershipExpiredTime[updateMember] = membershipExpiredTime;
+
+        emit UpdateMembership(updateMember, membershipExpiredTime);
+    }
+
+    function newMembershipWithPayment(
         address newMember,
         uint membershipExpiredTime,
         uint256 tokenAmount,
@@ -45,7 +74,7 @@ contract Membership is Ownable, IMembership {
         emit NewMembership(newMember, membershipExpiredTime);
     }
 
-    function updateMembershipExpiredTime(
+    function updateMembershipExpiredTimeWithPayment(
         address updateMember,
         uint membershipExpiredTime,
         uint256 tokenAmount,
@@ -64,6 +93,8 @@ contract Membership is Ownable, IMembership {
         calorieCoin.transferFrom(updateMember, owner(), tokenAmount);
 
         _membershipExpiredTime[updateMember] = membershipExpiredTime;
+
+        emit UpdateMembership(updateMember, membershipExpiredTime);
     }
 
     function removeMembership(
@@ -86,5 +117,16 @@ contract Membership is Ownable, IMembership {
         address member
     ) external view override returns(bool) {
         return _membership[member];
+    }
+
+    function isExpired(
+        address member
+    ) external view override returns(bool) {
+        if(_membership[member])
+        {
+            return block.timestamp <= _membershipExpiredTime[member];
+        }
+
+        return false;
     }
 }
