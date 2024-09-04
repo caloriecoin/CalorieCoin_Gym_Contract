@@ -28,6 +28,13 @@ After if contracts are deployed, contract's address will be write in here 😘
 #### Mainnet Contract Address
 + Token `Proxy`: -
 + TRC20 `CalorieCoin`: -
+### Membership
+#### Testnet(Nile) Contract Address
++ `Membership` : [TKszFkFisdB7K5P4yqp3LnymhAY7PRrykM](https://nile.tronscan.org/#/contract/TKszFkFisdB7K5P4yqp3LnymhAY7PRrykM)
+    - Hex: 416cb4899dd2a7ceb14bc1502dbc97ff0e448b9464
+#### Mainnet Contract Address
++ `Membership` : -
+    - Hex: -
 ### Badge
 #### Testnet(Nile) Contract Address
 + TRC721 `Badge`: -
@@ -50,11 +57,6 @@ After if contracts are deployed, contract's address will be write in here 😘
 + `Order`: -
 #### Mainnet Contract Address
 + `Order`: -
-### Membership
-#### Testnet(Nile) Contract Address
-+ `Membership`: [TAi8LPXCd5iJLiMqEY9xQ7Hok6B9mU9PfS](https://nile.tronscan.org/#/token20/TAi8LPXCd5iJLiMqEY9xQ7Hok6B9mU9PfS)  
-#### Mainnet Contract Address
-+ `Membership`: -
 
 ## Tests
 And you can running this project with `hardhat` & this commands..
