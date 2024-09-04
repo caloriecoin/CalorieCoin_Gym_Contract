@@ -59,14 +59,12 @@ After if contracts are deployed, contract's address will be write in here 😘
 #### Mainnet Contract Address
 + `Order`: -
 
-## Tests
-And you can running this project with `hardhat` & this commands..
+## Build
+And you can build contracts with `hardhat`
 
 ```shell
-npx hardhat test
-
-# or if you need gas report
-REPORT_GAS=true npx hardhat test
+# example compile commands
+npx hardhat compile
 ```
 
 ## Hackathon List
