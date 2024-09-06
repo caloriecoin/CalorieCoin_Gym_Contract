@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.6;
+// Compatible with OpenZeppelin Contracts ^5.0.0
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 
@@ -52,49 +53,61 @@ contract Membership is Ownable, IMembership {
     function newMembershipWithPayment(
         address newMember,
         uint membershipExpiredTime,
-        uint256 tokenAmount,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external override onlyOwner {
+        uint256 paymentAmount
+    ) external 
+      override 
+      onlyOwner 
+    {
         if(_membership[newMember]) {
             revert ErrAlreadySubmitMember(newMember);
         }
 
         CalorieCoin calorieCoin = _tokenProxyContract.getLatestCalorieCoin();
 
-        calorieCoin.permit(newMember, address(this), tokenAmount, deadline, v, r, s);
-        calorieCoin.transferFrom(newMember, owner(), tokenAmount);
+        calorieCoin.transferFrom(newMember, owner(), paymentAmount);
 
         _membershipExpiredTime[newMember] = membershipExpiredTime;
-
         _membership[newMember] = true;
 
         emit NewMembership(newMember, membershipExpiredTime);
     }
-
+    
     function updateMembershipExpiredTimeWithPayment(
         address updateMember,
         uint membershipExpiredTime,
-        uint256 tokenAmount,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external override onlyOwner {
+        uint256 paymentAmount
+    ) external 
+      override 
+      onlyOwner 
+    {
         if(!_membership[updateMember]) {
             revert ErrNotSubmitMember(updateMember);
         }
 
         CalorieCoin calorieCoin = _tokenProxyContract.getLatestCalorieCoin();
 
-        calorieCoin.permit(updateMember, address(this), tokenAmount, deadline, v, r, s);
-        calorieCoin.transferFrom(updateMember, owner(), tokenAmount);
+        calorieCoin.transferFrom(updateMember, owner(), paymentAmount);
 
         _membershipExpiredTime[updateMember] = membershipExpiredTime;
 
         emit UpdateMembership(updateMember, membershipExpiredTime);
+    }
+
+    function refundMembership(
+        address refundMember,
+        uint256 amount
+    ) external override onlyOwner {
+        if(!_membership[refundMember]) {
+            revert ErrNotSubmitMember(refundMember);
+        }
+
+        CalorieCoin calorieCoin = _tokenProxyContract.getLatestCalorieCoin();
+
+        calorieCoin.transferFrom(msg.sender, refundMember, amount);
+
+        _membership[refundMember] = false;
+
+        emit RefundMembership(refundMember);
     }
 
     function removeMembership(

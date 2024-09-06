@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.6;
+pragma solidity ^0.8.20;
 
 interface IMembership {
     event NewMembership(address indexed newMember, uint membershipExpiredTime);
     event UpdateMembership(address indexed updateMember, uint membershipExpiredTime);
+    event RefundMembership(address indexed refundMember);
 
     function newMembership(
         address newMember,
@@ -18,21 +19,18 @@ interface IMembership {
     function newMembershipWithPayment(
         address newMember,
         uint membershipExpiredTime,
-        uint256 tokenAmount,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
+        uint256 paymentAmount
     ) external;
     
     function updateMembershipExpiredTimeWithPayment(
         address updateMember,
         uint membershipExpiredTime,
-        uint256 tokenAmount,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
+        uint256 paymentAmount
+    ) external;
+
+    function refundMembership(
+        address refundMember,
+        uint256 amount
     ) external;
 
     function removeMembership(

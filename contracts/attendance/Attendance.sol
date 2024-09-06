@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Compatible with OpenZeppelin Contracts ^5.0.0
 pragma solidity ^0.8.6;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -10,8 +11,10 @@ import "../membership/IMembership.sol";
 import "./IAttendance.sol";
 
 contract Attendance is Ownable, IAttendance {
-    mapping(address=>uint256) internal _attendanceList;
-    mapping(address=>bool) internal _checkerList;
+    uint256 private _rewardOffset;
+
+    mapping(address=>uint256) private _attendanceList;
+    mapping(address=>bool) private _checkerList;
 
     Proxy private _tokenProxyContract;
     IMembership private _membership;
@@ -33,7 +36,7 @@ contract Attendance is Ownable, IAttendance {
     }
 
     function setRewardOffset(uint256 amount) virtual override external {
-
+        _rewardOffset = amount;
     }
 
     function attendance(address target) virtual override external {
