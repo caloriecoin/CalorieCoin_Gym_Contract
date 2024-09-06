@@ -21,10 +21,10 @@ This project for our `CalorieCoin` Team's eco-system contracts.
 After if contracts are deployed, contract's address will be write in here 😘
 ### CalroieCoin Token & Token Proxy Contract Address
 #### Testnet(Nile) Contract Address
-+ Token `Proxy`: [TRjWW11ULV9dDvgdjqhzs5RsuEDVaJZFtr](https://nile.tronscan.org/#/contract/TRjWW11ULV9dDvgdjqhzs5RsuEDVaJZFtr) 
-    - Hex: 41aceacbe7b595870105809d06b9675ff19d3126d9
-+ TRC20 `CalorieCoin`: [TV2a5ZqZQydfrGQ56LnoLLcpkzXSDhh9Ck](https://nile.tronscan.org/#/token20/TV2a5ZqZQydfrGQ56LnoLLcpkzXSDhh9Ck)  
-    - Hex: 41d10d3b8a0662074cd6fa388dd2411a49c2627622
++ Token `Proxy`: [TZ9GHDzCCWWMYUcmQiaityderjkm5PP4gb](https://nile.tronscan.org/#/contract/TZ9GHDzCCWWMYUcmQiaityderjkm5PP4gb) 
+    - Hex: 41fe31ca2207bb6ce58952974beaf20ef9bc1a11f2
++ TRC20 `CalorieCoin`: [TPpb7SRg9eP9G7MoJeHeGSAda4JponLT97](https://nile.tronscan.org/#/token20/TPpb7SRg9eP9G7MoJeHeGSAda4JponLT97)  
+    - Hex: 4197f0794c23123cd12d0c8f10ebbbe92de171b98f
 #### Mainnet Contract Address
 + Token `Proxy`: -
 + TRC20 `CalorieCoin`: -
