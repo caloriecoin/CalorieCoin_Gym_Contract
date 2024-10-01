@@ -56,7 +56,8 @@ After if contracts are deployed, contract's address will be write in here 😘
 + `Attendance`: -
 ### Order
 #### Testnet(Nile) Contract Address
-+ `Order`: -
++ `Order`: [TRTFSGdvmYtwczQ9T2QhGrLSRWnJLQPjFQ](https://nile.tronscan.org/#/contract/TRTFSGdvmYtwczQ9T2QhGrLSRWnJLQPjFQ)
+    - Hex: 41a9d790e8f9a7d99ad316235f889edb89bd025903
 #### Mainnet Contract Address
 + `Order`: -
 

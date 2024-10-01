@@ -9,6 +9,7 @@ interface IOrder {
         string tags;
         uint256 price;
         bool recommanded;
+        string nutritionFacts;
     }
 
     event NewItem(string indexed category, uint256 indexed itemId);
@@ -27,19 +28,29 @@ interface IOrder {
     // onlyOwner
     function newItem(
         string memory category,
-        Item memory item
+        string memory name,
+        string memory description,
+        string memory imageUrl,
+        string memory tags,
+        uint256 price,
+        bool recommanded,
+        string memory nutritionFacts
     )external returns(uint256 itemId);
 
     // onlyOwner
     function updateItemInfo(
-        string memory category,
         uint256 itemId,
-        Item memory item
+        string memory name,
+        string memory description,
+        string memory imageUrl,
+        string memory tags,
+        uint256 price,
+        bool recommanded,
+        string memory nutritionFacts
     )external;
 
     // onlyOwner
     function setOrderableAmount(
-        string memory category,
         uint256 itemId,
         uint256 amount
     )external;
@@ -55,12 +66,26 @@ interface IOrder {
     )external;
 
     function getItemInfo(
-        string memory category,
         uint256 itemId
     ) external
       view
     returns (
         Item memory item
+    );
+
+    function getLatestItemIndex(
+    ) external
+      view
+    returns (
+        uint256
+    );
+
+    function getCategory(
+        uint256 categoryId
+    ) external
+      view
+    returns (
+        string memory categoryName
     );
 
     error ErrInvalidCategory(string category);

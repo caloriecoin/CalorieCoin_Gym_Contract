@@ -40,8 +40,8 @@ contract Attendance is Ownable, IAttendance {
         _membership = membership;
     }
 
-    function submitChecker() virtual override external onlyOwner {
-        _checkerList[msg.sender] = true;
+    function submitChecker(address _checker) virtual override external onlyOwner {
+        _checkerList[_checker] = true;
     }
 
     function setRewardOffset(uint256 amount) virtual override external {
@@ -64,9 +64,9 @@ contract Attendance is Ownable, IAttendance {
             revert ErrInvalidChecker(msg.sender);
         }
 
-        if(!_membership.isMember(target)) {
-            revert ErrNotMembershipSubmit(target);
-        }
+        // if(!_membership.isMember(target)) {
+        //     revert ErrNotMembershipSubmit(target);
+        // }
 
         (uint256 year, uint256 month, uint256 day) = block.timestamp.timestampToDate();
 

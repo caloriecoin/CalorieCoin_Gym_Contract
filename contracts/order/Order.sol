@@ -12,11 +12,13 @@ contract Order is Ownable, IOrder {
     Proxy private _tokenProxy;
 
     uint256 private _categoryIndex;
+    mapping(uint256=>string) private _categoryList;
+    mapping(string=>uint256) private _categoryListIndex;
     mapping(string=>bool) private _categoryCheckList;
     mapping(string=>mapping(uint256=>uint256)) _categoryItemIndex;
     
     uint256 private _itemIndex;
-    mapping(string=>mapping(uint256=>Item)) private _itemList;
+    mapping(uint256=>Item) private _itemList;
     mapping(uint256=>bool) private _itemCheckList;
 
     mapping(uint256=>uint256) private _limitOf;
@@ -38,6 +40,8 @@ contract Order is Ownable, IOrder {
         {
             _categoryCheckList[category] = true;
             _categoryIndex++;
+
+            _categoryList[_categoryIndex] = category;
         }
     }
 
@@ -49,14 +53,25 @@ contract Order is Ownable, IOrder {
     // onlyOwner
     function newItem(
         string memory category,
-        Item memory item
+        string memory name,
+        string memory description,
+        string memory imageUrl,
+        string memory tags,
+        uint256 price,
+        bool recommanded,
+        string memory nutritionFacts
     )external override returns(uint256 itemId) {
         if(!_categoryCheckList[category]) {
             revert ErrInvalidCategory(category);
         }
 
         _itemIndex++;
-        _itemList[category][_itemIndex] = item;
+        _categoryListIndex[category]++;
+
+        _categoryItemIndex[category][_categoryListIndex[category]] = _itemIndex;
+        _itemList[_itemIndex] = Item(name, description, imageUrl, tags, price, recommanded, nutritionFacts);
+
+        _categoryCheckList[category] = true;
         _itemCheckList[_itemIndex] = true;
         
         emit NewItem(category, itemId);
@@ -65,38 +80,34 @@ contract Order is Ownable, IOrder {
 
     // onlyOwner
     function updateItemInfo(
-        string memory category,
         uint256 itemId,
-        Item memory item
+        string memory name,
+        string memory description,
+        string memory imageUrl,
+        string memory tags,
+        uint256 price,
+        bool recommanded,
+        string memory nutritionFacts
     )external 
      override
      onlyOwner 
     {
-        if(!_categoryCheckList[category]) {
-            revert ErrInvalidCategory(category);
-        }
-
         if(!_itemCheckList[itemId]) {
             revert ErrNotExistItem(itemId);
         }
 
-        _itemList[category][itemId] = item;
+        _itemList[itemId] = Item(name, description, imageUrl, tags, price, recommanded, nutritionFacts);
     }
 
     // onlyOwner
     function setOrderableAmount(
-        string memory category,
         uint256 itemId,
         uint256 amount
     )external 
      override
      onlyOwner
     {   
-        if(!_categoryCheckList[category]) {
-            revert ErrInvalidCategory(category);
-        }
-        
-         if(!_itemCheckList[itemId]) {
+        if(!_itemCheckList[itemId]) {
             revert ErrNotExistItem(itemId);
         }
 
@@ -107,9 +118,13 @@ contract Order is Ownable, IOrder {
         uint256 itemId,
         uint256 amount
     )external override {
+        if(!_itemCheckList[itemId]) {
+            revert ErrNotExistItem(itemId);
+        }
+
         CalorieCoin caloriecoin = _tokenProxy.getLatestCalorieCoin();
 
-        caloriecoin.transferFrom(msg.sender, owner(), amount);
+        caloriecoin.transferFrom(msg.sender, owner(), _itemList[itemId].price * amount);
 
         _balanceOf[msg.sender][itemId] += amount;
 
@@ -120,11 +135,16 @@ contract Order is Ownable, IOrder {
         uint256 itemId,
         uint256 amount
     )external override {
+        if(!_itemCheckList[itemId]) {
+            revert ErrNotExistItem(itemId);
+        }
 
+        _balanceOf[msg.sender][itemId] -= amount;
+
+        emit UseItem(itemId, msg.sender, amount);
     }
 
     function getItemInfo(
-        string memory category,
         uint256 itemId
     ) external
       override
@@ -132,10 +152,31 @@ contract Order is Ownable, IOrder {
     returns (
         Item memory item
     ) {
-         if(!_itemCheckList[itemId]) {
+        if(!_itemCheckList[itemId]) {
             revert ErrNotExistItem(itemId);
         }
 
-        return _itemList[category][itemId];
+        return _itemList[itemId];
+    }
+
+    function getLatestItemIndex(
+    ) external
+      override
+      view
+    returns (
+        uint256
+    ) {
+        return _itemIndex;
+    }
+
+    function getCategory(
+        uint256 categoryId
+    ) external
+      override
+      view
+    returns (
+        string memory categoryName
+    ) {
+        return _categoryList[categoryId];
     }
 }

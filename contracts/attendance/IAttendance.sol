@@ -13,7 +13,7 @@ interface IAttendance {
         view 
         returns(uint256);
 
-    function submitChecker() external;
+    function submitChecker(address _checker) external;
 
     function attendance(
         address checker
