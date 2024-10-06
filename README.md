@@ -50,8 +50,7 @@ After if contracts are deployed, contract's address will be write in here 😘
 + `Application`: -
 ### Attendance
 #### Testnet(Nile) Contract Address
-+ `Attendance`: [TY9RUqa6pLfg9HdfDEeqdyBkyxWHT385Kn](https://nile.tronscan.org/#/contract/TY9RUqa6pLfg9HdfDEeqdyBkyxWHT385Kn)
-    - Hex: 41f34158010b372456d286b390e637cbe551a8f14f
++ `Attendance`: [TTFQDLNa8tSvE7hTryaoudN1WrzQgDfBh2](https://nile.tronscan.org/#/contract/TTFQDLNa8tSvE7hTryaoudN1WrzQgDfBh2)
 #### Mainnet Contract Address
 + `Attendance`: -
 ### Order
