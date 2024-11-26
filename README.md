@@ -16,7 +16,7 @@ This project for our `CalorieCoin` Team's eco-system contracts.
 ### Membership
 ### Heart-Rate(or Burned Calorie Rate) based Reward Program
 
-## Main Contract Deployer Address
+## TRON Mainnet Contract Deployer Address
 + [TVt6FVhL9uTVoCrV8PQi3vWvP2TUBZPwFX](https://tronscan.org/#/address/TVt6FVhL9uTVoCrV8PQi3vWvP2TUBZPwFX)
 
 ## Deployed Contracts Address
