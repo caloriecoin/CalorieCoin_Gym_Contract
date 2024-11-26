@@ -16,6 +16,8 @@ This project for our `CalorieCoin` Team's eco-system contracts.
 ### Membership
 ### Heart-Rate(or Burned Calorie Rate) based Reward Program
 
+## Main Contract Deployer Address
++ TVt6FVhL9uTVoCrV8PQi3vWvP2TUBZPwFX
 
 ## Deployed Contracts Address
 After if contracts are deployed, contract's address will be write in here 😘
@@ -26,15 +28,14 @@ After if contracts are deployed, contract's address will be write in here 😘
 + TRC20 `CalorieCoin`: [TPpb7SRg9eP9G7MoJeHeGSAda4JponLT97](https://nile.tronscan.org/#/token20/TPpb7SRg9eP9G7MoJeHeGSAda4JponLT97)  
     - Hex: 4197f0794c23123cd12d0c8f10ebbbe92de171b98f
 #### Mainnet Contract Address
-+ Token `Proxy`: -
-+ TRC20 `CalorieCoin`: -
++ Token `Proxy`: [TRZuVTXsjUxUL8VG8pH8pVVTVjFDjHvaVS](https://tronscan.org/#/contract/TRZuVTXsjUxUL8VG8pH8pVVTVjFDjHvaVS)
++ TRC20 `CalorieCoin`: [TJZgFyVsWaK8A1cy35XkBr5br1NCLUk71c](https://tronscan.org/#/token20/TJZgFyVsWaK8A1cy35XkBr5br1NCLUk71c)
 ### Membership
 #### Testnet(Nile) Contract Address
 + `Membership` : [TKszFkFisdB7K5P4yqp3LnymhAY7PRrykM](https://nile.tronscan.org/#/contract/TKszFkFisdB7K5P4yqp3LnymhAY7PRrykM)
     - Hex: 416cb4899dd2a7ceb14bc1502dbc97ff0e448b9464
 #### Mainnet Contract Address
-+ `Membership` : -
-    - Hex: -
++ `Membership` : [TGwZWWgGzeatpPCVj7mZHRX8aBpRjnYMpU](https://tronscan.org/#/contract/TGwZWWgGzeatpPCVj7mZHRX8aBpRjnYMpU)
 ### Badge
 #### Testnet(Nile) Contract Address
 + TRC721 `Badge`: badge will be create by `BadgeFactory` contract
@@ -42,7 +43,7 @@ After if contracts are deployed, contract's address will be write in here 😘
     - Hex: 41a1ce779f8af4ba8add5c21484264e42c9d7c5a66
 #### Mainnet Contract Address
 + TRC721 `Badge`: -
-+ `BadgeFactory`: -
++ `BadgeFactory`: [TRgpJLjCjyiUvnQMgqux4F5dPBzBJbsmW3](https://tronscan.org/#/contract/TRgpJLjCjyiUvnQMgqux4F5dPBzBJbsmW3)
 ### Application
 #### Testnet(Nile) Contract Address
 + `Application`: -
@@ -52,13 +53,13 @@ After if contracts are deployed, contract's address will be write in here 😘
 #### Testnet(Nile) Contract Address
 + `Attendance`: [TTFQDLNa8tSvE7hTryaoudN1WrzQgDfBh2](https://nile.tronscan.org/#/contract/TTFQDLNa8tSvE7hTryaoudN1WrzQgDfBh2)
 #### Mainnet Contract Address
-+ `Attendance`: -
++ `Attendance`: [TEtKZXddogGnp46n7oEbELjp8op6roD18V](https://tronscan.org/#/contract/TEtKZXddogGnp46n7oEbELjp8op6roD18V)
 ### Order
 #### Testnet(Nile) Contract Address
 + `Order`: [TRTFSGdvmYtwczQ9T2QhGrLSRWnJLQPjFQ](https://nile.tronscan.org/#/contract/TRTFSGdvmYtwczQ9T2QhGrLSRWnJLQPjFQ)
     - Hex: 41a9d790e8f9a7d99ad316235f889edb89bd025903
 #### Mainnet Contract Address
-+ `Order`: -
++ `Order`: [TBdsgkYU1RQM5qwYEAa39ALY82Zbt53s34](https://tronscan.org/#/contract/TBdsgkYU1RQM5qwYEAa39ALY82Zbt53s34)
 
 ## Build
 And you can build contracts with `hardhat`
